@@ -1,0 +1,30 @@
+{
+
+    "manifest_version": 2,
+    "name": "Groupr",
+    "version": "1.0",
+  
+    "description": "The foundation for a tab grouping extension",
+  
+    "icons": {
+      "48": "icons/tabs_96.png"
+    },
+
+    "permissions": [
+        "activeTab"
+    ],    
+
+    "browser_action": {
+        "default_icon": "icons/tabs_96.png",
+        "default_title": "Groupr",
+        "default_popup": "groupr.html"
+    },
+  
+    "content_scripts": [
+      {
+        "matches": ["*://*.mozilla.org/*"],
+        "js": ["groupr.js"]
+      }
+    ]
+  
+  }

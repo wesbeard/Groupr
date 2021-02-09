@@ -1,0 +1,31 @@
+html, body {
+  width: auto;
+  height: auto;
+}
+  
+.hidden {
+  display: none;
+}
+  
+button {
+  background-color: lightgrey;
+  font-family: sans-serif;
+  color: black;
+  font-size: 1.5em;
+  padding: 10px;
+  margin: 5px;
+  border: 0;
+  border-radius: 5%;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: darkgrey;
+  color: black;
+}
+
+#popup-content {
+  display: flex;
+  flex-direction: column;
+}
