@@ -10,8 +10,10 @@
   
   <div id="popup-content">
     <img id="logo" src="icons/groupr_orig_black.png">
-    <button>Add group</button>
-    <button>Remove group</button>
+    <div id="add-remove-buttons">
+      <button id="add-button"><img class="button-icon" src="icons/add-folder.png"> Add group</button>
+      <button id="remove-button">Remove group <img class="button-icon" src="icons/trash.png"></button>
+    </div>
     <select id="groups">
       <option>Choose a group</option>
       <option>Work</option>
@@ -20,7 +22,7 @@
   </select>
     <button>Open in new window</button>
     <button>Organize</button>
-    <button>Configure</button>
+    <button>Configure  <img class="button-icon" src="icons/settings.png"></button>
   </div>
 
   <div id="error-content" class="hidden">

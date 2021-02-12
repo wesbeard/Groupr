@@ -1,5 +1,5 @@
 html, body {
-  width: auto;
+  width: 275px;
   height: auto;
 }
   
@@ -15,16 +15,25 @@ html, body {
 }
 
 select {
-  margin: 15px;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  width: 80%;
+  height: 50px;
+  border-radius: 1em;
+  font-size: 1em;
 }
   
 button {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
   width: 80%;
   height: 10%;
   background-color: lightgrey;
   font-family: sans-serif;
   color: black;
-  font-size: 1em;
+  font-size: 1.2em;
   padding: 15px;
   margin-bottom: 15px;
   margin-left: auto;
@@ -33,11 +42,35 @@ button {
   border-radius: 5em;
   transition-duration: 0.5s;
   cursor: pointer;
+  box-shadow: 1px 2px;
 }
 
 button:hover {
   background-color: darkgrey;
   color: black;
+  box-shadow: 2px 4px;
+}
+
+#add-remove-buttons {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+
+#add-button {
+  border-radius: 5em 0 0 5em;
+  margin-right: 1px;
+}
+
+#remove-button {
+  border-radius: 0 5em 5em 0;
+  margin-left: 1px;
+}
+
+.button-icon {
+  margin: 7px;
+  width: 30px;
+  height: 30px;
 }
 
 #popup-content {
