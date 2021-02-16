@@ -1,6 +1,7 @@
 html, body {
-  width: 275px;
+  width: 300px;
   height: auto;
+  background-color: #0D1B2A;
 }
   
 .hidden {
@@ -15,23 +16,31 @@ html, body {
 }
 
 select {
+  background-color: #E0E1DD;
+  text-align-last:center;
   margin: auto;
   margin-top: 5px;
   margin-bottom: 15px;
-  width: 80%;
+  width: 85%;
   height: 50px;
   border-radius: 1em;
-  font-size: 1em;
+  font-size: 1.2em;
+  border-width: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+select option {
+  font-size: 2em;
+  font-family: 'Roboto', sans-serif;
 }
   
 button {
   display: flex;
   align-items: center; 
   justify-content: center;
-  width: 80%;
+  width: 85%;
   height: 10%;
-  background-color: lightgrey;
-  font-family: sans-serif;
+  background-color: #E0E1DD;
   color: black;
   font-size: 1.2em;
   padding: 15px;
@@ -39,15 +48,16 @@ button {
   margin-left: auto;
   margin-right: auto;
   border: 0;
-  border-radius: 5em;
-  transition-duration: 0.5s;
+  border-radius: 2em;
+  transition-duration: 0.3s;
   cursor: pointer;
-  box-shadow: 1px 2px;
+  box-shadow: 2px 4px;
+  font-family: 'Roboto', sans-serif;
 }
 
 button:hover {
-  background-color: darkgrey;
-  color: black;
+  background-color: #415A77;
+  color: #E0E1DD;
   box-shadow: 2px 4px;
 }
 
@@ -58,19 +68,20 @@ button:hover {
 }
 
 #add-button {
+  width: 45%;
   border-radius: 5em 0 0 5em;
   margin-right: 1px;
 }
 
 #remove-button {
+  width: 45%;
   border-radius: 0 5em 5em 0;
   margin-left: 1px;
 }
 
-.button-icon {
-  margin: 7px;
-  width: 30px;
-  height: 30px;
+.material-icons {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 #popup-content {
