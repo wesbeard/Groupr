@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 
-<html>
-
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="groupr.css" />
+  <script type="text/javascript" src="groupr.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -15,14 +14,20 @@
   <div id="popup-content">
     <img id="logo" src="icons/groupr_orig.png">
     <div id="add-remove-buttons">
-      <button id="add-button"><i class="material-icons">create_new_folder</i> Add group</button>
-      <button id="remove-button">Remove group <i class="material-icons">remove_circle</i></button>
+      <!-- for the add and remove, generate a menu to enter which one to add and remove and then call the and remove buttons from there with the form parameter-->
+      <button id="add-button" onclick="addGroupForm()"><i class="material-icons">create_new_folder</i>Add group</button>
+      <button id="remove-button" onclick="removeGroupForm()"><i class="material-icons">remove_circle</i>Remove group</button>
+      <form id="add-remove-form">
+        <!-- use this form to get user input for adding and removing groups-->
+        <!-- test form code 
+              <label>Enter a group:</label>
+              <input type="text" name="groupname"><br>
+              <label>&nbsp;</label>
+              <input type="submit" value="Enter"><br>-->
+      </form>
     </div>
     <select id="groups">
-      <option>Choose group</option>
-      <option>Work</option>
-      <option>Class</option>
-      <option>Entertainment</option>
+      <!-- js will input options -->
     </select>
     <button>Open in new window <i class="material-icons">open_in_browser</i></button>
     <button>Organize <i class="material-icons">sort</i></button>
