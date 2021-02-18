@@ -8,6 +8,9 @@ addEventListeners();
 // update group list
 function updateGroupList()
 { 
+    // reset group select
+    groupSelect.innerHTML = '';
+
     // start with default option
     var defualt = document.createElement("option");
     defualt.textContent = "Choose a group";
@@ -19,6 +22,7 @@ function updateGroupList()
         var group = userGroups[i];
         var option = document.createElement("option");
         option.textContent = group;
+        option.classList.add('option');
         option.value = group;
         groupSelect.appendChild(option);
     }
@@ -29,7 +33,7 @@ function addEventListeners() {
     removeButton = document.getElementById('remove-button');
 
     addButton.addEventListener('click', event => addGroupForm());
-    removeButton.addEventListener('click', event => addGroupForm());
+    removeButton.addEventListener('click', event => removeGroupForm());
 }
 
 // remember to add a check later to see if added group exists or removed group does not
@@ -63,6 +67,7 @@ function addGroupForm()
     var submit = document.createElement("input");
     submit.setAttribute("type", "submit");
     submit.setAttribute("value", "Submit");
+    submit.setAttribute("id", "submitButton");
     submit.setAttribute("onclick", "addGroup()");
     //onclick = "addGroup(group)";
 
@@ -70,6 +75,12 @@ function addGroupForm()
     addForm.appendChild(label);
     addForm.appendChild(group);
     addForm.appendChild(submit);
+
+    function handleForm(event) { event.preventDefault(); }
+    addForm.addEventListener('submit', handleForm);
+
+    submitButton = document.getElementById('submitButton');
+    submitButton.addEventListener('click', event => addGroup());
 
     console.log("add form end");
 }
@@ -101,6 +112,7 @@ function removeGroupForm()
     var submit = document.createElement("input");
     submit.setAttribute("type", "submit");
     submit.setAttribute("value", "Submit");
+    submit.setAttribute("id", "submitButton");
     submit.setAttribute("onclick", "removeGroup()");
     //onclick = removeGroup(group);
 
@@ -109,6 +121,12 @@ function removeGroupForm()
     removeForm.appendChild(group);
     removeForm.appendChild(submit);
 
+    function handleForm(event) { event.preventDefault(); }
+    removeForm.addEventListener('submit', handleForm);
+
+    submitButton = document.getElementById('submitButton');
+    submitButton.addEventListener('click', event => removeGroup());
+
     console.log("remove form end");
 }
 
@@ -116,33 +134,48 @@ function removeGroupForm()
 function addGroup()
 {
     value = document.getElementById('groupValue').value;
-    console.log(value);
     for (var i = 0; i < userGroups.length; i++)
     {
         if (userGroups[i] === value) {
-            alert(value + " already exists.");
+            //alert(value + " already exists.");
             return;
         }
     }
-    userGroups.push(group);
+    userGroups.push(value);
+    console.log(value);
     console.log(userGroups);
-    alert(value + " added");
+    //alert(value + " added");
     updateGroupList();
+    removeFormContents();
 }
 
 // remove the given group from group array
 function removeGroup()
 {
     value = document.getElementById('groupValue').value;
-    console.log(value);
     for (var i = 0; i < userGroups.length; i++)
     {
         if (userGroups[i] === value) {
             userGroups.splice(i, 1);
-            alert(value + " removed");
+            //alert(value + " removed");
+            console.log(value);
+            console.log(userGroups);
             updateGroupList();
+            removeFormContents();
             return;
         }
     }
-    alert(value + " does not exist.");
+    //alert(value + " does not exist.");
 }
+
+// make function to remove form contents so a new one can be added. Make sure it is called when submit button is pressed.
+function removeFormContents() 
+{
+    addRemoveForm = document.getElementById('add-remove-form');
+    addRemoveForm.innerHTML = '';
+    console.log("remove contents");
+}
+
+// idea to hide/show extra buttons:
+// add event listener to see when one of the other options are clicked and then call a function that inserts the buttons into the html
+// probably add id to all of them besides the defualt to differentiate between them
