@@ -19,7 +19,13 @@
         "default_title": "Groupr",
         "default_popup": "groupr.html"
     },
-  
+
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    
     "content_scripts": [
       {
         "matches": ["*://*.mozilla.org/*"],

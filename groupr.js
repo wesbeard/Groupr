@@ -3,6 +3,7 @@ var groupSelect = document.getElementById('groups');
 // create array to hold user's groups
 var userGroups = ["Work", "Class", "Entertainment", "Hello"];
 updateGroupList();
+addEventListeners();
 
 // update group list
 function updateGroupList()
@@ -21,6 +22,14 @@ function updateGroupList()
         option.value = group;
         groupSelect.appendChild(option);
     }
+}
+
+function addEventListeners() {
+    addButton = document.getElementById('add-button');
+    removeButton = document.getElementById('remove-button');
+
+    addButton.addEventListener('click', event => addGroupForm());
+    removeButton.addEventListener('click', event => addGroupForm());
 }
 
 // remember to add a check later to see if added group exists or removed group does not
@@ -61,6 +70,8 @@ function addGroupForm()
     addForm.appendChild(label);
     addForm.appendChild(group);
     addForm.appendChild(submit);
+
+    console.log("add form end");
 }
 
 // insert form for user to remove group
@@ -97,6 +108,8 @@ function removeGroupForm()
     removeForm.appendChild(label);
     removeForm.appendChild(group);
     removeForm.appendChild(submit);
+
+    console.log("remove form end");
 }
 
 // add the given group to group array
@@ -109,7 +122,7 @@ function addGroup()
         if (userGroups[i] === value) {
             alert(value + " already exists.");
             return;
-        } 
+        }
     }
     userGroups.push(group);
     console.log(userGroups);
