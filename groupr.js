@@ -1,16 +1,26 @@
 // get group select element
 var groupSelect = document.getElementById('groups');
 // create array to hold user's groups
-var userGroups = ["Choose a group", "Work", "Class", "Entertainment", "Hello"];
+var userGroups = ["Work", "Class", "Entertainment", "Hello"];
+updateGroupList();
 
-// loop through the users groups and add them to the dropdown menu
-for (var i = 0; i < userGroups.length; i++) 
-{
-    var group = userGroups[i];
-    var option = document.createElement("option");
-    option.textContent = group;
-    option.value = group;
-    groupSelect.appendChild(option);
+// update group list
+function updateGroupList()
+{ 
+    // start with default option
+    var defualt = document.createElement("option");
+    defualt.textContent = "Choose a group";
+    defualt.value = group;
+    groupSelect.appendChild(defualt);
+   
+    // loop through the users groups and add them to the dropdown menu
+    for (var i = 0; i < userGroups.length; i++) {
+        var group = userGroups[i];
+        var option = document.createElement("option");
+        option.textContent = group;
+        option.value = group;
+        groupSelect.appendChild(option);
+    }
 }
 
 // remember to add a check later to see if added group exists or removed group does not
@@ -37,14 +47,15 @@ function addGroupForm()
     // create input box
     var group = document.createElement('input');
     group.setAttribute("type", "text");
+    group.setAttribute("id", "groupValue");
     group.setAttribute("name", "groupName");
 
     // create button to submit group
     var submit = document.createElement("input");
     submit.setAttribute("type", "submit");
     submit.setAttribute("value", "Submit");
-    submit.onclick = "addGroup(group)";
-    //setAttribute("onClick", "addGroup(group)");
+    submit.setAttribute("onclick", "addGroup()");
+    //onclick = "addGroup(group)";
 
     // append elements to form
     addForm.appendChild(label);
@@ -72,14 +83,15 @@ function removeGroupForm()
     // create input box
     var group = document.createElement('input');
     group.setAttribute("type", "text");
+    group.setAttribute("id", "groupValue");
     group.setAttribute("name", "groupName");
 
     // create button to submit group
     var submit = document.createElement("input");
     submit.setAttribute("type", "submit");
     submit.setAttribute("value", "Submit");
-    submit.onclick = "removeGroup(group)";
-    //setAttribute("onClick", "removeGroup(group)");
+    submit.setAttribute("onclick", "removeGroup()");
+    //onclick = removeGroup(group);
 
     // append elements to form
     removeForm.appendChild(label);
@@ -88,24 +100,36 @@ function removeGroupForm()
 }
 
 // add the given group to group array
-function addGroup(group) 
+function addGroup()
 {
-    //if (userGroups.find(group)) {
-    //    alert(group + " already exists.");
-    //} else {
-        userGroups.push(group);
-        alert(group + " added");
-    //}
+    value = document.getElementById('groupValue').value;
+    console.log(value);
+    for (var i = 0; i < userGroups.length; i++)
+    {
+        if (userGroups[i] === value) {
+            alert(value + " already exists.");
+            return;
+        } 
+    }
+    userGroups.push(group);
+    console.log(userGroups);
+    alert(value + " added");
+    updateGroupList();
 }
 
 // remove the given group from group array
-function removeGroup(group) 
+function removeGroup()
 {
-    //if (!userGroups.find(group))
-    //{
-    //    alert(group + " does not exist.");
-    //} else {
-        userGroups.pop(group);
-        alert(group + " removed");
-    //}
+    value = document.getElementById('groupValue').value;
+    console.log(value);
+    for (var i = 0; i < userGroups.length; i++)
+    {
+        if (userGroups[i] === value) {
+            userGroups.splice(i, 1);
+            alert(value + " removed");
+            updateGroupList();
+            return;
+        }
+    }
+    alert(value + " does not exist.");
 }
