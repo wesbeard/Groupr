@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+<html>
+
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="groupr.css" />
@@ -29,9 +31,13 @@
     </select>
 
     <div id="context-actions">
-      <button class="context-button"> Save tabs as current group <i class="material-icons">save</i></button>
+      <button class="context-button" id="save-button"> Save tabs as current group <i class="material-icons">save</i></button>
       <button class="context-button"> Open tabs in new window <i class="material-icons">open_in_browser</i></button>
       <button class="context-button"> Schedule open/close<i class="material-icons">access_time_filled</i></button>
+    </div>
+
+    <div id="debug-div">
+      <!-- div used for outputting debug lines -->
     </div>
 
   </div>
