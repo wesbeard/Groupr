@@ -62,6 +62,7 @@ function updateGroupList()
 // insert form for user to add group
 function addGroupForm() 
 {
+    removeFormContents();
     // get the add-remove form
     var addForm = document.getElementById("add-remove-form");
     // set form method to post
@@ -116,6 +117,7 @@ function addGroupForm()
 // insert form for user to remove group
 function removeGroupForm() 
 {
+    removeFormContents();
     // get the add-remove form
     var removeForm = document.getElementById("add-remove-form");
     // set form method to post
