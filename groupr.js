@@ -6,7 +6,11 @@ var groupSelect = document.getElementById('groups');
 
 var testGroup = [];
 
-var userGroups = ["test"];
+var testGroup2 = new Object();
+testGroup2.name = "test";
+testGroup2.tabs = testGroup;
+
+var userGroups = [testGroup2];
 
 updateGroupList();
 addEventListeners();
@@ -55,7 +59,7 @@ function updateGroupList()
    
     // loop through the users groups and add them to the dropdown menu
     for (var i = 0; i < userGroups.length; i++) {
-        var group = userGroups[i];
+        var group = userGroups[i].name;
         var option = document.createElement("option");
         option.textContent = group;
         option.classList.add('option');
@@ -185,7 +189,7 @@ function addGroup()
     value = document.getElementById('groupValue').value;
     for (var i = 0; i < userGroups.length; i++)
     {
-        if (userGroups[i] === value) {
+        if (userGroups[i].name === value) {
             //alert(value + " already exists.");
             removeFormContents();
             return;
@@ -195,7 +199,11 @@ function addGroup()
             return;
         }
     }
-    userGroups.push(value);
+    var newGroup = new Object();
+    newGroup.name = value;
+    newGroup.tabs = [];
+
+    userGroups.push(newGroup);
     console.log(value);
     console.log(userGroups);
     //alert(value + " added");
@@ -209,7 +217,7 @@ function removeGroup()
     value = document.getElementById('groupValue').value;
     for (var i = 0; i < userGroups.length; i++)
     {
-        if (userGroups[i] === value) {
+        if (userGroups[i].name === value) {
             userGroups.splice(i, 1);
             //alert(value + " removed");
             console.log(value);
@@ -233,27 +241,39 @@ function removeFormContents()
 // get current tabs and save them in an array of objects
 function saveCurrentTabs() // maybe add current group as a paramter here so you can search for it in the array and then add tabs to that group
 {
-    console.log("save func");
-    // get debug div for testing purposes
-    debug = document.getElementById('debug-div');
+    // get currently selected option from dropdown menu
+    groupSelect = document.getElementById('groups');
+    selectedGroupName = groupSelect.options[groupSelect.selectedIndex].text;
+    console.log(userGroups);
+    var selectedGroup;
+    for (let group of userGroups)
+    {
+        console.log(group.name);
+        if (group.name === selectedGroupName)
+        {
+            console.log("success");
+            selectedGroup = group;
+        }
+    }
+
+    console.log(selectedGroup);
 
     var currentTabs = browser.tabs.query({ currentWindow: true }); // browser keyword is only available in extensions so debugging is hard
     // however, if you hit inspect button on firefox debug page you can navigate to the console
     currentTabs.then((tabs) => {
         console.log(currentTabs);
         for (let tab of tabs) {
-            //debug.innerHTML = '<h3>', tab.url, '</h3>';
             console.log(tab.title);
             console.log(tab.url);
-            console.log();
+            //console.log();
 
             // add counter and make new tab object for each tab and add them to an array of tabs
             var userTab = new Object();
             userTab.url = tab.url;
             userTab.title = tab.title;
             userTab.pinned = tab.pinned;
-            testGroup.push(userTab);
+            selectedGroup.tabs.push(userTab);
         }
-        console.log(testGroup); // might have to make this an object too so you can store name of group and then the actual array of saved tabs
+        console.log(userGroups); // might have to make this an object too so you can store name of group and then the actual array of saved tabs
     })
 }
