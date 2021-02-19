@@ -1,9 +1,36 @@
 // get group select element
 var groupSelect = document.getElementById('groups');
 // create array to hold user's groups
-var userGroups = ["Work", "Class", "Entertainment", "Hello"];
+var userGroups = ["test"];
 updateGroupList();
 addEventListeners();
+updateContextButtons();
+
+
+function addEventListeners() {
+    addButton = document.getElementById('add-button');
+    removeButton = document.getElementById('remove-button');
+    selectMenu = document.getElementById('groups');
+
+    addButton.addEventListener('click', event => addGroupForm());
+    removeButton.addEventListener('click', event => removeGroupForm());
+    selectMenu.addEventListener('change', event => updateContextButtons());
+}
+
+function updateContextButtons()
+{
+    var contextButtons = document.getElementsByClassName('context-button');
+    for (var i = 0; i < contextButtons.length; i++) {
+        if (groupSelect.selectedIndex == 0) {
+            contextButtons[i].style.display = "none";  
+            contextButtons[i].style.visibility = "hidden";
+        }
+        else {
+            contextButtons[i].style.display = "block";
+            contextButtons[i].style.visibility = "visible";
+        }  
+   }
+}
 
 // update group list
 function updateGroupList()
@@ -28,14 +55,6 @@ function updateGroupList()
     }
 }
 
-function addEventListeners() {
-    addButton = document.getElementById('add-button');
-    removeButton = document.getElementById('remove-button');
-
-    addButton.addEventListener('click', event => addGroupForm());
-    removeButton.addEventListener('click', event => removeGroupForm());
-}
-
 // remember to add a check later to see if added group exists or removed group does not
 // then complete the add and remove functions
 // also think about removing form data after submitted???
@@ -55,13 +74,14 @@ function addGroupForm()
 
     // create label form the input
     var label = document.createElement('label');
-    label.innerHTML = "Enter New Group Name: ";
+    label.innerHTML = "";
     
     // create input box
     var group = document.createElement('input');
     group.setAttribute("type", "text");
     group.setAttribute("id", "groupValue");
     group.setAttribute("name", "groupName");
+    group.setAttribute("placeholder", "Group name to add");
 
     // create button to submit group
     var submit = document.createElement("input");
@@ -71,10 +91,17 @@ function addGroupForm()
     submit.setAttribute("onclick", "addGroup()");
     //onclick = "addGroup(group)";
 
+    // create button to close current form
+    var close = document.createElement("button");
+    close.setAttribute("id", "closeForm");
+    close.setAttribute("onclick", "removeFormContents()");
+    close.innerHTML = "<i class=\"material-icons\">close</i>";
+
     // append elements to form
     addForm.appendChild(label);
     addForm.appendChild(group);
     addForm.appendChild(submit);
+    addForm.appendChild(close);
 
     function handleForm(event) { event.preventDefault(); }
     addForm.addEventListener('submit', handleForm);
@@ -82,7 +109,8 @@ function addGroupForm()
     submitButton = document.getElementById('submitButton');
     submitButton.addEventListener('click', event => addGroup());
 
-    console.log("add form end");
+    closeForm = document.getElementById('closeForm');
+    closeForm.addEventListener('click', event => removeFormContents());
 }
 
 // insert form for user to remove group
@@ -100,13 +128,14 @@ function removeGroupForm()
 
     // create label form the input
     var label = document.createElement('label');
-    label.innerHTML = "Enter Group Name to be Removed: ";
+    label.innerHTML = "";
 
     // create input box
     var group = document.createElement('input');
     group.setAttribute("type", "text");
     group.setAttribute("id", "groupValue");
     group.setAttribute("name", "groupName");
+    group.setAttribute("placeholder", "Group name to remove");
 
     // create button to submit group
     var submit = document.createElement("input");
@@ -116,10 +145,17 @@ function removeGroupForm()
     submit.setAttribute("onclick", "removeGroup()");
     //onclick = removeGroup(group);
 
+     // create button to close current form
+     var close = document.createElement("button");
+     close.setAttribute("id", "closeForm");
+     close.setAttribute("onclick", "removeFormContents()");
+     close.innerHTML = "<i class=\"material-icons\">close</i>";
+
     // append elements to form
     removeForm.appendChild(label);
     removeForm.appendChild(group);
     removeForm.appendChild(submit);
+    removeForm.appendChild(close);
 
     function handleForm(event) { event.preventDefault(); }
     removeForm.addEventListener('submit', handleForm);
@@ -127,7 +163,8 @@ function removeGroupForm()
     submitButton = document.getElementById('submitButton');
     submitButton.addEventListener('click', event => removeGroup());
 
-    console.log("remove form end");
+    closeForm = document.getElementById('closeForm');
+    closeForm.addEventListener('click', event => removeFormContents());
 }
 
 // add the given group to group array
@@ -138,6 +175,11 @@ function addGroup()
     {
         if (userGroups[i] === value) {
             //alert(value + " already exists.");
+            removeFormContents();
+            return;
+        } 
+        else if (value.length <= 0) {
+            removeFormContents();
             return;
         }
     }

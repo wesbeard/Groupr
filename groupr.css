@@ -1,7 +1,9 @@
 html, body {
-  width: 300px;
+  width: 335px;
   height: auto;
   background-color: #0D1B2A;
+  margin-bottom: 10px;
+  overflow-x: hidden;
 }
   
 .hidden {
@@ -9,21 +11,23 @@ html, body {
 }
 
 #logo {
+  margin-top: 0px;
+  margin-bottom: 0px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10px;
   width: 50vw;
-  height: 50vw;
+  height: 35vw;
 }
 
 select {
   background-color: #E0E1DD;
   text-align-last:center;
   margin: auto;
-  margin-top: 5px;
   margin-bottom: 15px;
   width: 85%;
   height: 50px;
-  border-radius: 1em;
+  border-radius: .5em;
   font-size: 1.2em;
   border-width: 0;
   font-family: 'Roboto', sans-serif;
@@ -38,7 +42,8 @@ button {
   display: flex;
   align-items: center; 
   justify-content: center;
-  width: 85%;
+  vertical-align: middle;
+  width: 90%;
   height: 10%;
   background-color: #E0E1DD;
   color: black;
@@ -67,24 +72,90 @@ button:hover {
   justify-content: center;
 }
 
+#add-remove-form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
 #add-button {
+  box-shadow: -2px 4px;
   width: 45%;
-  border-radius: 5em 0 0 5em;
+  border-radius: 2em 0 0 2em;
   margin-right: 1px;
+  margin-bottom: 0px;
 }
 
 #remove-button {
   width: 45%;
-  border-radius: 0 5em 5em 0;
+  border-radius: 0 2em 2em 0;
   margin-left: 1px;
+  margin-bottom: 0px;
 }
 
 .material-icons {
   margin-left: 5px;
   margin-right: 5px;
+  vertical-align: bottom;
 }
 
 #popup-content {
   display: flex;
   flex-direction: column;
+}
+
+#input-forms {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  color: #E0E1DD;
+}
+
+#groupValue {
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+  background-color: #E0E1DD;
+  width: 50%;
+  height: 40px;
+  border-radius: 1em 0 0 1em;
+  border-width: 0;
+  padding-left: 12px;
+  margin-left: 7%;
+  margin-top: 10px;
+}
+
+#groupValue:hover {
+  box-shadow: -2px 4px #415A77;
+}
+
+#submitButton {
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+  height: 46px;
+  width: 22%;
+  border-radius: 0 1em 1em 0;
+  border-left-width: 1px;
+  border-color:#0D1B2A;
+  background-color:#415A77;
+  color:#E0E1DD;
+  margin-top: 8px;
+}
+
+#submitButton:hover {
+  background-color:#2d445f;
+  color:#E0E1DD;
+  cursor: pointer;
+  box-shadow: 1px 2px #E0E1DD;
+}
+
+#closeForm {
+  width: 10px;
+  height: 10px;
+  color: #E0E1DD;
+  background-color: transparent;
+  box-shadow: none;
+  margin-top: 17px;
+  margin-left: 0px;
 }
