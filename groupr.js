@@ -1,7 +1,13 @@
 // get group select element
 var groupSelect = document.getElementById('groups');
-// create array to hold user's groups
+// create map to hold user group data
+// each group is going to be an array of tab objects
+// user will create a new group and then click add current tabs to group to add tabs to that group
+
+var userTab = new Object();
+
 var userGroups = ["test"];
+
 updateGroupList();
 addEventListeners();
 updateContextButtons();
@@ -221,6 +227,6 @@ function removeFormContents()
     console.log("remove contents");
 }
 
-// idea to hide/show extra buttons:
-// add event listener to see when one of the other options are clicked and then call a function that inserts the buttons into the html
-// probably add id to all of them besides the defualt to differentiate between them
+// get current tabs and save them in an array of objects
+
+
