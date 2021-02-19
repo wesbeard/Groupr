@@ -220,7 +220,3 @@ function removeFormContents()
     addRemoveForm.innerHTML = '';
     console.log("remove contents");
 }
-
-// idea to hide/show extra buttons:
-// add event listener to see when one of the other options are clicked and then call a function that inserts the buttons into the html
-// probably add id to all of them besides the defualt to differentiate between them
