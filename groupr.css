@@ -66,6 +66,13 @@ button:hover {
   box-shadow: 2px 4px;
 }
 
+button:active {
+  transition-duration: 0s;
+  background-color: #415A77;
+  box-shadow: 2px 4px #666;
+  transform: translateY(2px);
+}
+
 #add-remove-buttons {
   display: flex;
   align-items: center; 
@@ -84,6 +91,10 @@ button:hover {
   border-radius: 2em 0 0 2em;
   margin-right: 1px;
   margin-bottom: 0px;
+}
+
+#add-button:active {
+  box-shadow: 2px 4px #666;
 }
 
 #remove-button {
@@ -158,4 +169,9 @@ button:hover {
   box-shadow: none;
   margin-top: 17px;
   margin-left: 0px;
+}
+
+#closeForm:hover {
+  color: #415A77;
+  box-shadow: 2px, 4px, #E0E1DD;
 }
