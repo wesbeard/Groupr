@@ -20,7 +20,7 @@ Created by Wes Beard and Josh Bogin for CSI-330
 - Clone the repository to a folder you can locate easily
 - Open Firefox and enter `about:debugging`as a URL
 - This should open the Firefox debugging panel
-- Select the left button labeled `The Firefox`
+- Select the left button labeled `This Firefox`
 - Select `Load Temporary Add-on...`
 - Choose any of the core files (such as `groupr.html`)
 - The extension should now be loaded!
