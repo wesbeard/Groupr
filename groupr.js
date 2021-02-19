@@ -53,6 +53,7 @@ function updateGroupList()
         option.value = group;
         groupSelect.appendChild(option);
     }
+    updateContextButtons();
 }
 
 // remember to add a check later to see if added group exists or removed group does not
