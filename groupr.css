@@ -94,7 +94,8 @@ button:active {
 }
 
 #add-button:active {
-  box-shadow: 2px 4px #666;
+  transition-duration: 0s;
+  box-shadow: -2px 4px #666;
 }
 
 #remove-button {
@@ -159,6 +160,13 @@ button:active {
   color:#E0E1DD;
   cursor: pointer;
   box-shadow: 1px 2px #E0E1DD;
+}
+
+#submitButton:active {
+  transition-duration: 0s;
+  background-color: #415A77;
+  box-shadow: 2px 2px #666;
+  transform: translateY(2px);
 }
 
 #closeForm {
