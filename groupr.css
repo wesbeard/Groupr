@@ -5,32 +5,29 @@ html, body {
   margin-bottom: 10px;
   overflow-x: hidden;
 }
+
+#popup-content {
+  display: flex;
+  flex-direction: column;
+}
   
 .hidden {
   display: none;
 }
 
-#logo {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px;
-  width: 50vw;
-  height: 35vw;
+.material-icons {
+  margin-left: 5px;
+  margin-right: 5px;
+  vertical-align: bottom;
 }
 
-select {
-  background-color: #E0E1DD;
-  text-align-last:center;
-  margin: auto;
-  margin-bottom: 15px;
-  width: 85%;
-  height: 50px;
-  border-radius: .5em;
-  font-size: 1.2em;
-  border-width: 0;
-  font-family: 'Roboto', sans-serif;
+#logo {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90vw;
+  height: 30vw;
 }
 
 select option {
@@ -41,7 +38,6 @@ select option {
 button {
   display: flex;
   align-items: center; 
-  justify-content: center;
   vertical-align: middle;
   width: 90%;
   height: 10%;
@@ -105,15 +101,22 @@ button:active {
   margin-bottom: 0px;
 }
 
-.material-icons {
-  margin-left: 5px;
-  margin-right: 5px;
-  vertical-align: bottom;
+select {
+  background-color: #E0E1DD;
+  text-align-last:center;
+  margin: auto;
+  margin-bottom: 15px;
+  width: 85%;
+  height: 50px;
+  border-radius: .5em;
+  font-size: 1.2em;
+  border-width: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
-#popup-content {
-  display: flex;
-  flex-direction: column;
+select option {
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
 }
 
 #input-forms {
@@ -182,4 +185,11 @@ button:active {
 #closeForm:hover {
   color: #415A77;
   box-shadow: 2px, 4px, #E0E1DD;
+}
+
+#context-button {
+  display: flex;
+  align-items: center; 
+  vertical-align: middle;
+  justify-content: space-between;
 }

@@ -4,7 +4,7 @@ var groupSelect = document.getElementById('groups');
 // each group is going to be an array of tab objects
 // user will create a new group and then click add current tabs to group to add tabs to that group
 
-var userTab = new Object();
+var testGroup = [];
 
 var userGroups = ["test"];
 
@@ -13,14 +13,17 @@ addEventListeners();
 updateContextButtons();
 
 
-function addEventListeners() {
+function addEventListeners() 
+{
     addButton = document.getElementById('add-button');
     removeButton = document.getElementById('remove-button');
     selectMenu = document.getElementById('groups');
+    saveButton = document.getElementById('save-button');
 
     addButton.addEventListener('click', event => addGroupForm());
     removeButton.addEventListener('click', event => removeGroupForm());
     selectMenu.addEventListener('change', event => updateContextButtons());
+    saveButton.addEventListener('click', event => saveCurrentTabs());
 }
 
 function updateContextButtons()
@@ -228,5 +231,29 @@ function removeFormContents()
 }
 
 // get current tabs and save them in an array of objects
+function saveCurrentTabs() // maybe add current group as a paramter here so you can search for it in the array and then add tabs to that group
+{
+    console.log("save func");
+    // get debug div for testing purposes
+    debug = document.getElementById('debug-div');
 
+    var currentTabs = browser.tabs.query({ currentWindow: true }); // browser keyword is only available in extensions so debugging is hard
+    // however, if you hit inspect button on firefox debug page you can navigate to the console
+    currentTabs.then((tabs) => {
+        console.log(currentTabs);
+        for (let tab of tabs) {
+            //debug.innerHTML = '<h3>', tab.url, '</h3>';
+            console.log(tab.title);
+            console.log(tab.url);
+            console.log();
 
+            // add counter and make new tab object for each tab and add them to an array of tabs
+            var userTab = new Object();
+            userTab.url = tab.url;
+            userTab.title = tab.title;
+            userTab.pinned = tab.pinned;
+            testGroup.push(userTab);
+        }
+        console.log(testGroup); // might have to make this an object too so you can store name of group and then the actual array of saved tabs
+    })
+}
