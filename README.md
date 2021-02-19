@@ -1,6 +1,6 @@
 # Groupr
 
-A simple tab grouping extension for the Firefox web browser that allows for a better web workflow
+A simple tab grouping extension for the Firefox web browser that allows for a better web workflow  
 Created by Wes Beard and Josh Bogin for CSI-330
 
 ## Features
